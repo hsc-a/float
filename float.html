@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            /* width:100px;
+           height:200px; */
+           border:2px solid #567;
+           }
+           #sd{
+               float:left;
+           }
+    </style>
+</head>
+
+<body>
+    <div>昵</div>
+     <!-- //情况一：上层元素浮动对下面元素的影响 -->
+    <div id="sd">你好</div>
+    <div>小明</div>
+    <!-- 没有对元素设置宽高，下面的元素会上去，上面元素变为内容的宽， -->
+    <!-- 情况二：下面元素浮动对上面元素的影响 -->
+    <div >你好</div>
+    <div id="sd">小明</div>
+    <!-- 下方的元素浮动对上方的元素没有影响，但是下方元素如果没有设置宽变为内容的宽，如果设置，宽为设置的宽 -->
+    <!-- 情况三：父元素中具有子元素，如果子元素浮动，对父元素的影响 -->
+    <br/>
+    <br/>
+    <div>
+        
+        <div id="sd">
+            答复
+        </div>
+    </div>
+    
+    <!-- 如果父元素除了浮动的子元素没有其他元素，父元素会塌陷，父元素的高没了，子元素的宽变为内容的宽 -->
+    <br>
+    <br>
+    <!-- 如何使父元素不塌陷 -->
+    <!-- 方法一 -->
+    <div style="overflow:hidden">
+        
+        <div id="sd">
+            答复
+        </div>
+    </div>
+    <!-- 让父元素超出隐藏 -->
+    <!-- 方法二 -->
+    <div style="height:100px;">
+        
+        <div id="sd">
+            答复
+        </div>
+    </div>
+    <!-- 对父元素设置高度 -->
+    <!-- 情况四:三个元素，前两个浮动，一个左浮动,一个右浮动,布局会如何 -->
+    <div>
+        <div style="float:right">你好</div>
+        <div style="float:left">小明</div>
+        <div>mei </div>
+        
+    </div>
+    <!-- 结果:两边浮动,中间自适应 -->
+     <!--三个元素，前两个浮动，同时左浮动或右浮动布局会如何 -->
+     <div>
+        <div style="float:right">你好</div>
+        <div style="float:right">小明</div>
+        <div>mei </div>
+        
+    </div>
+    <!-- 结果:前两个的宽变为内容的宽,最后一个会找空显示 -->
+    <!-- 三个元素，后两个浮动，布局会如何 -->
+    <div>
+        <div>mei </div>
+        <div style="float:right">你好</div>
+        <div style="float:right">小明</div>
+        
+        
+    </div>
+    <!-- 结果:对第一个元素没有任何影响,第二个元素组和第三个元素在第二行同时宽变为内容的宽 -->
+    <br>
+    <!-- 情况五:如果父元素中含有两个元素,一个脱离文档流,一个不脱离文档流 -->
+    <div>
+            <div style="float:right">mei </div>
+            <div >你好</div>
+    </div>
+    <!-- 父元素的高变为不脱离文档流元素的高,如果第一个子元素设置浮动,那第一个元素宽会变成内容的宽,两个
+    子元素会并排显示,但是如果给第二个子元素设置浮动,那对第一个子元素没有影响,他的宽度还为100%;第二个子元素的宽为内容的宽 -->
+    <!-- 情况六:  如果一个父元素含有子元素,父元素浮动,对子元素的影响-->
+    <div style="float:right">
+            <div >mei </div>
+            <div >你好</div>
+    </div>
+    <!-- 父元素会带着子元素一起浮动,子元素的排列不会改变,如果子元素为块级,那么不会显示在一行,父元素的宽度为子元素的最大宽度 ,高度还是几个子元素高度之和-->
+    <br>
+    <br>
+    <!-- 情况七:子元素和父元素同时浮动 -->
+    <div style="float:right">
+            <div style="float:right">mei </div>
+            <div style="float:right" >你好</div>
+    </div>
+<!-- 那么子元素并排排列,父元素的高为子元素的最大的高,宽为子元素宽度之和 -->
+
+</body>  
+</html>
